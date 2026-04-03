@@ -3,6 +3,7 @@ functions {
 #include functions/pmfs.stan
 #include functions/observation_model.stan
 #include functions/delays.stan
+#include functions/params.stan
 }
 
 data {
@@ -15,6 +16,8 @@ data {
   real rw_sd_prior_mean; // prior mean for random walk SD
   real<lower = 0> rw_sd_prior_sd; // prior SD for random walk SD
 #include data/delays.stan
+#include data/params.stan
+  int<lower = 0> param_id_reporting_overdispersion;
 }
 
 transformed data{
@@ -39,11 +42,12 @@ transformed data{
 parameters {
   vector<lower = delay_params_lower>[delay_params_length]
     delay_params;
+  vector<lower = params_lower, upper = params_upper>[
+    n_params_variable
+  ] params;
   real log_cases_intercept;
   vector[t - 1] rw_noise;
   real<lower = 0> rw_sd;
-  // only used when model_type == 1
-  real<lower = 0> reporting_overdispersion;
 }
 
 transformed parameters{
@@ -81,26 +85,37 @@ model {
     delay_params_groups, delay_dist, delay_weight
   );
 
+  // priors for params (reporting_overdispersion)
+  params_lp(
+    params, prior_dist, prior_dist_params,
+    params_lower, params_upper
+  );
+
   // random walk priors
   log_cases_intercept ~ normal(log_cases_guess, 2);
   rw_sd ~ normal(rw_sd_prior_mean, rw_sd_prior_sd) T[0,];
   rw_noise ~ std_normal();
 
-  reporting_overdispersion ~ normal(0, 1) T[0,];
-
   // observation likelihood across all snapshots
-  for (i in 1:obs_sets) {
-    int n_t = end_t[i] - start_t[i] + 1;
-    array[n_t] int case_times;
-    for (j in 1:n_t) {
-      case_times[j] = j;
-    }
-    report_lp(
-      obs[start_t[i]:end_t[i], i],
-      case_times,
-      expected_obs[start_t[i]:end_t[i], i],
-      reporting_overdispersion, model_type, 1
+  {
+    real reporting_overdispersion = get_param(
+      param_id_reporting_overdispersion,
+      params_fixed_lookup, params_variable_lookup,
+      params_value, params
     );
+    for (i in 1:obs_sets) {
+      int n_t = end_t[i] - start_t[i] + 1;
+      array[n_t] int case_times;
+      for (j in 1:n_t) {
+        case_times[j] = j;
+      }
+      report_lp(
+        obs[start_t[i]:end_t[i], i],
+        case_times,
+        expected_obs[start_t[i]:end_t[i], i],
+        reporting_overdispersion, model_type, 1
+      );
+    }
   }
 }
 
@@ -120,16 +135,23 @@ generated quantities {
         0, delay_type_max[delay_id_truncation] + 1, obs_sets
       );
 
-  for (i in 1:obs_sets) {
-    int n_t = end_t[i] - start_t[i] + 1;
-    recon_obs[1:n_t, i] = expected_obs[start_t[i]:end_t[i], i];
-    {
-      array[n_t] int sampled = report_rng(
-        expected_obs[start_t[i]:end_t[i], i],
-        reporting_overdispersion, model_type
-      );
-      for (j in 1:n_t) {
-        gen_obs[j, i] = sampled[j];
+  {
+    real reporting_overdispersion = get_param(
+      param_id_reporting_overdispersion,
+      params_fixed_lookup, params_variable_lookup,
+      params_value, params
+    );
+    for (i in 1:obs_sets) {
+      int n_t = end_t[i] - start_t[i] + 1;
+      recon_obs[1:n_t, i] = expected_obs[start_t[i]:end_t[i], i];
+      {
+        array[n_t] int sampled = report_rng(
+          expected_obs[start_t[i]:end_t[i], i],
+          reporting_overdispersion, model_type
+        );
+        for (j in 1:n_t) {
+          gen_obs[j, i] = sampled[j];
+        }
       }
     }
   }
