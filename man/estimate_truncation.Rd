@@ -83,12 +83,12 @@ truncation distribution (as a CMF) to the latent cases.
 using the selected observation model (negative binomial or Poisson).
 }
 
-The truncation distribution can be any parametric family supported by
-\code{dist_spec} (e.g. log-normal, gamma). For simpler or more complex
-nowcasting needs, see the
+The truncation distribution can be any family supported by
+\code{dist_spec} (e.g. log-normal, gamma). This can be thought of as a
+Bayesian form of the chain-ladder nowcasting approach in the
 \href{https://package.epinowcast.org/baselinenowcast/}{\code{baselinenowcast}}
-and \href{https://package.epinowcast.org/}{\code{epinowcast}} packages
-respectively.
+package. For settings requiring time-varying delays, see
+\href{https://package.epinowcast.org/}{\code{epinowcast}}.
 }
 \examples{
 \donttest{
