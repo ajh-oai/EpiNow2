@@ -21,8 +21,7 @@ This occurs when the quantity being observed, for example cases, hospitalisation
 The `estimate_truncation()` model infers parameters of the underlying delay distribution from multiple snapshots of past data.
 It uses a generative approach where latent untruncated cases are modelled directly and all snapshots contribute to the likelihood.
 
-This model sits between two alternatives in terms of complexity.
-The [baselinenowcast](https://package.epinowcast.org/baselinenowcast/) package provides a simpler non-Bayesian chain-ladder approach, while `estimate_truncation` uses a Bayesian generative model with a fixed delay distribution.
+This can be thought of as a Bayesian form of the chain-ladder nowcasting approach implemented in the [baselinenowcast](https://package.epinowcast.org/baselinenowcast/) package, with the added benefit of full uncertainty quantification and delay estimation.
 For settings requiring time-varying delays or more detailed reporting structure, see the [epinowcast](https://package.epinowcast.org) package.
 
 ## Model
@@ -73,5 +72,5 @@ where $\bar{C}$ is the mean of the latest snapshot.
 
 ### Truncation distribution
 
-The truncation distribution can be any parametric family supported by `dist_spec()`, including log-normal, gamma, and others.
+The truncation distribution can be any family supported by `dist_spec()`, including log-normal, gamma, and others.
 The default is a discretised log-normal.

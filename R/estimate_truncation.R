@@ -110,12 +110,12 @@ merge_trunc_pred_obs <- function(observations, predictions) {
 #' 3. All snapshots (including the latest) contribute to the likelihood
 #' using the selected observation model (negative binomial or Poisson).
 #'
-#' The truncation distribution can be any parametric family supported by
-#' `dist_spec` (e.g. log-normal, gamma). For simpler or more complex
-#' nowcasting needs, see the
+#' The truncation distribution can be any family supported by
+#' `dist_spec` (e.g. log-normal, gamma). This can be thought of as a
+#' Bayesian form of the chain-ladder nowcasting approach in the
 #' [`baselinenowcast`](https://package.epinowcast.org/baselinenowcast/)
-#' and [`epinowcast`](https://package.epinowcast.org/) packages
-#' respectively.
+#' package. For settings requiring time-varying delays, see
+#' [`epinowcast`](https://package.epinowcast.org/).
 #'
 #' @param data A list of `<data.frame>`s each containing a `date` variable
 #' and a `confirm` (numeric) variable. Each data set should be a snapshot
