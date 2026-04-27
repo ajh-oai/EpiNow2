@@ -46,7 +46,10 @@ vector update_Rt(int t, real R0, vector noise, array[] int bps,
         gp[(gp_n + 1):t] = rep_vector(noise[gp_n], t - gp_n);
       }
     } else {
-      gp[2:(gp_n + 1)] = noise;
+      // alpha controls trajectory SD, not increment SD: rescale increments
+      // by 1/sqrt(gp_n) so total variance after gp_n cumulated steps is
+      // approximately alpha^2 instead of alpha^2 * gp_n.
+      gp[2:(gp_n + 1)] = noise / sqrt(gp_n);
       gp = cumulative_sum(gp);
     }
     logR = logR + gp;
