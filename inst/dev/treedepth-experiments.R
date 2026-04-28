@@ -14,16 +14,19 @@ suppressPackageStartupMessages({
 
 options(mc.cores = 4)
 
+args <- commandArgs(trailingOnly = TRUE)
+mode <- if (length(args) >= 1) args[[1]] else "baseline"
+
 seeds <- c(42L, 9876L, 100L, 200L, 300L)
 
+# Sweep over alpha priors. Same set is run for both modes ("baseline" and
+# "rescaled") so cross-mode comparison at fixed alpha is meaningful.
 experiments <- list(
-  # baseline = current main code, but the rt.stan rescale change is in place;
-  # so "baseline" here means rescaled-GP with current default alpha (very tight)
-  list(label = "exp_rescaled_default",       alpha_dist = NULL),
-  list(label = "exp_rescaled_alpha_n0p1",    alpha_dist = Normal(mean = 0, sd = 0.1)),
-  list(label = "exp_rescaled_alpha_n0p3",    alpha_dist = Normal(mean = 0, sd = 0.3)),
-  list(label = "exp_rescaled_alpha_n0p5",    alpha_dist = Normal(mean = 0, sd = 0.5)),
-  list(label = "exp_rescaled_alpha_ln0p3",   alpha_dist = LogNormal(mean = 0.3, sd = 0.3))
+  list(label = "alpha_default",  alpha_dist = NULL),
+  list(label = "alpha_n0p05",    alpha_dist = Normal(mean = 0, sd = 0.05)),
+  list(label = "alpha_n0p1",     alpha_dist = Normal(mean = 0, sd = 0.1)),
+  list(label = "alpha_n0p3",     alpha_dist = Normal(mean = 0, sd = 0.3)),
+  list(label = "alpha_ln0p3",    alpha_dist = LogNormal(mean = 0.3, sd = 0.3))
 )
 
 # vignette `def` chunk setup
@@ -34,8 +37,8 @@ reporting_delay <- LogNormal(meanlog = 0.5, sdlog = 0.5, max = 10)
 delay <- incubation_period + reporting_delay
 rt_prior <- LogNormal(mean = 2, sd = 1)
 
-out_path <- "inst/dev/treedepth-experiments-results.csv"
-log_path <- "inst/dev/treedepth-experiments.log"
+out_path <- sprintf("inst/dev/treedepth-experiments-%s.csv", mode)
+log_path <- sprintf("inst/dev/treedepth-experiments-%s.log", mode)
 log_msg <- function(...) {
   cat(format(Sys.time()), ..., "\n", file = log_path, append = TRUE)
 }
@@ -92,11 +95,12 @@ run_one <- function(label, alpha_dist, seed) {
 results <- list()
 for (exp in experiments) {
   for (s in seeds) {
-    log_msg(sprintf("[%s] seed=%d START", exp$label, s))
-    r <- run_one(exp$label, exp$alpha_dist, s)
+    full_label <- sprintf("%s__%s", mode, exp$label)
+    log_msg(sprintf("[%s] seed=%d START", full_label, s))
+    r <- run_one(full_label, exp$alpha_dist, s)
     log_msg(sprintf(
       "[%s] seed=%d DONE: stuck=%d/4 td_hits=%s div=%s max_rhat=%s elapsed=%.0fs",
-      exp$label, s, r$n_stuck,
+      full_label, s, r$n_stuck,
       if (is.na(r$td_hits)) "NA" else as.character(r$td_hits),
       if (is.na(r$divergences)) "NA" else as.character(r$divergences),
       if (is.na(r$max_rhat)) "NA" else sprintf("%.3g", r$max_rhat),

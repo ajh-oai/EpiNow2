@@ -1,0 +1,50 @@
+2026-04-27 23:47:12 [rescaled__alpha_default] seed=42 START 
+2026-04-27 23:57:13 [rescaled__alpha_default] seed=42 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-27 23:57:13 [rescaled__alpha_default] seed=9876 START 
+2026-04-28 00:07:15 [rescaled__alpha_default] seed=9876 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 00:07:15 [rescaled__alpha_default] seed=100 START 
+2026-04-28 00:17:17 [rescaled__alpha_default] seed=100 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 00:17:17 [rescaled__alpha_default] seed=200 START 
+2026-04-28 00:27:18 [rescaled__alpha_default] seed=200 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 00:27:18 [rescaled__alpha_default] seed=300 START 
+2026-04-28 00:37:19 [rescaled__alpha_default] seed=300 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 00:37:19 [rescaled__alpha_n0p05] seed=42 START 
+2026-04-28 00:47:21 [rescaled__alpha_n0p05] seed=42 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 00:47:21 [rescaled__alpha_n0p05] seed=9876 START 
+2026-04-28 00:57:22 [rescaled__alpha_n0p05] seed=9876 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 00:57:23 [rescaled__alpha_n0p05] seed=100 START 
+2026-04-28 01:07:24 [rescaled__alpha_n0p05] seed=100 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 01:07:24 [rescaled__alpha_n0p05] seed=200 START 
+2026-04-28 01:17:24 [rescaled__alpha_n0p05] seed=200 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 01:17:24 [rescaled__alpha_n0p05] seed=300 START 
+2026-04-28 01:27:25 [rescaled__alpha_n0p05] seed=300 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 01:27:25 [rescaled__alpha_n0p1] seed=42 START 
+2026-04-28 01:37:29 [rescaled__alpha_n0p1] seed=42 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=604s 
+2026-04-28 01:37:29 [rescaled__alpha_n0p1] seed=9876 START 
+2026-04-28 01:47:29 [rescaled__alpha_n0p1] seed=9876 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 01:47:29 [rescaled__alpha_n0p1] seed=100 START 
+2026-04-28 01:57:31 [rescaled__alpha_n0p1] seed=100 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 01:57:31 [rescaled__alpha_n0p1] seed=200 START 
+2026-04-28 02:07:33 [rescaled__alpha_n0p1] seed=200 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 02:07:33 [rescaled__alpha_n0p1] seed=300 START 
+2026-04-28 02:17:34 [rescaled__alpha_n0p1] seed=300 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 02:17:34 [rescaled__alpha_n0p3] seed=42 START 
+2026-04-28 02:27:36 [rescaled__alpha_n0p3] seed=42 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 02:27:36 [rescaled__alpha_n0p3] seed=9876 START 
+2026-04-28 02:37:37 [rescaled__alpha_n0p3] seed=9876 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 02:37:37 [rescaled__alpha_n0p3] seed=100 START 
+2026-04-28 02:47:38 [rescaled__alpha_n0p3] seed=100 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 02:47:38 [rescaled__alpha_n0p3] seed=200 START 
+2026-04-28 02:57:40 [rescaled__alpha_n0p3] seed=200 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 02:57:40 [rescaled__alpha_n0p3] seed=300 START 
+2026-04-28 03:07:41 [rescaled__alpha_n0p3] seed=300 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=602s 
+2026-04-28 03:07:41 [rescaled__alpha_ln0p3] seed=42 START 
+2026-04-28 03:17:42 [rescaled__alpha_ln0p3] seed=42 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 03:17:42 [rescaled__alpha_ln0p3] seed=9876 START 
+2026-04-28 03:27:43 [rescaled__alpha_ln0p3] seed=9876 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 03:27:43 [rescaled__alpha_ln0p3] seed=100 START 
+2026-04-28 03:37:43 [rescaled__alpha_ln0p3] seed=100 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 03:37:43 [rescaled__alpha_ln0p3] seed=200 START 
+2026-04-28 03:47:44 [rescaled__alpha_ln0p3] seed=200 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
+2026-04-28 03:47:44 [rescaled__alpha_ln0p3] seed=300 START 
+2026-04-28 03:57:45 [rescaled__alpha_ln0p3] seed=300 DONE: stuck=4/4 td_hits=NA div=NA max_rhat=NA elapsed=601s 
