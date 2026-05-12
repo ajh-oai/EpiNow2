@@ -1,0 +1,43 @@
+# Articles
+
+### Start here
+
+- [Getting started with
+  EpiNow2](https://epiforecasts.io/EpiNow2/dev/articles/EpiNow2.md):
+- [Model
+  overview](https://epiforecasts.io/EpiNow2/dev/articles/model_overview.md):
+- [Model
+  features](https://epiforecasts.io/EpiNow2/dev/articles/model_features.md):
+
+### Model definitions
+
+- [Model definition:
+  estimate_infections()](https://epiforecasts.io/EpiNow2/dev/articles/estimate_infections.md):
+- [Model definition:
+  estimate_secondary()](https://epiforecasts.io/EpiNow2/dev/articles/estimate_secondary.md):
+- [Model definition:
+  estimate_truncation()](https://epiforecasts.io/EpiNow2/dev/articles/estimate_truncation.md):
+- [Fitting delay distributions with
+  estimate_dist()](https://epiforecasts.io/EpiNow2/dev/articles/estimate-dist.md):
+- [Understanding delay distributions in
+  EpiNow2](https://epiforecasts.io/EpiNow2/dev/articles/delays.md):
+- [Gaussian Process implementation
+  details](https://epiforecasts.io/EpiNow2/dev/articles/gaussian_process_implementation_details.md):
+
+### Applied use
+
+- [Workflow for Rt estimation and
+  forecasting](https://epiforecasts.io/EpiNow2/dev/articles/estimate_infections_workflow.md):
+- [Examples:
+  estimate_infections()](https://epiforecasts.io/EpiNow2/dev/articles/estimate_infections_options.md):
+- [Prior choice and specification
+  guide](https://epiforecasts.io/EpiNow2/dev/articles/prior_choice_guide.md):
+- [Using epinow() for running in production
+  mode](https://epiforecasts.io/EpiNow2/dev/articles/epinow.md):
+- [Forecasting multiple data
+  streams](https://epiforecasts.io/EpiNow2/dev/articles/forecasting_multiple_data_streams.md):
+
+### Case studies
+
+- [Case studies and use in the
+  literature](https://epiforecasts.io/EpiNow2/dev/articles/case-studies.md):
